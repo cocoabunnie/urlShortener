@@ -14,7 +14,7 @@ app.use(express.static("client"));
 
 //server side rendering for main page
 app.get("/", function(request, response) {
-    response.sendFile(__dirname + "/client/client.html");
+    response.sendFile(__dirname + "/client/home.html");
 })
 
 
