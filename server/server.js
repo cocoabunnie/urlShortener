@@ -35,4 +35,14 @@ sqlConnection.connect(function(error){
     }
 });
 
+//POST function for submitting links to db (Should be connected to button on client side)
+app.post("/api/linkdata", function(request, response) {
+    var shortenedExtension = Math.random().toString(36).substring(2,8); //6 character unique link extention 
+
+    //inserting values into mysql db
+    var insertValues = `INSERT INTO userLinks(url,shortlink) 
+                        VALUES('${request.body.url}', '${shortenedExtension})`;
+    sqlConnection.query(insertValues);
+}); 
+
 app.listen(3000);
