@@ -85,17 +85,19 @@ app.get("/:shortlink", function(request,response){
                 message:"There was an error with selecting a shortlink!" + error
             });
         } else {
-            select = `UPDATE userLinks SET clicks = ${result[0].clicks + 1} WHERE id='${result[0].id}' LIMIT 1`;
-            sqlConnection.query(select, function(error, result1) {
-                if(error){
-                    response.status(500).json({
-                        status:"ERROR",
-                        message:"There was an error with updating the selected tuple!" + error
-                    });
-                } else {
-                    response.redirect(result[0].url);
-                }
-            })
+            if (result.length > 0){
+                select = `UPDATE userLinks SET clicks = ${result[0].clicks + 1} WHERE id='${result[0].id}' LIMIT 1`;
+                sqlConnection.query(select, function(error, result1) {
+                    if(error){
+                        response.status(500).json({
+                            status:"ERROR",
+                            message:"There was an error with updating the selected tuple!" + error
+                        });
+                    } else {
+                        response.redirect(result[0].url);
+                    }
+                })
+            }
         }
     })
 })
