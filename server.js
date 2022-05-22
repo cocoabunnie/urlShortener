@@ -60,18 +60,15 @@ app.post("/api/create-url", function(request, response) {
 }); 
 
 app.get("/api/get-data", function(request,response){
-    sqlConnection.query("SELECT * FROM userLinks", function(error, result){
+    let select = "SELECT * FROM userLinks";
+    sqlConnection.query(select, function(error, result){
         if(error){
             response.status(500).json({
                 status:"ERROR",
                 message:"There was an error with selecting data values!" + error
             });
         } else {
-            response.status(200).json({
-                status:"SUCCESS"
-            });
-
-            console.log("Data from db: \n" + result);
+            response.status(200).json(result);
         }
     })
 })
