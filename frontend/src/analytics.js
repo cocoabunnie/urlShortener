@@ -5,7 +5,7 @@ const Analytics = (props) => {
         <div>
             <h1>Welcome to the Link Analytics</h1>
     
-            <div class = "dataDisplayContainer">
+            <div className = "dataDisplayContainer">
                 
             </div>
 

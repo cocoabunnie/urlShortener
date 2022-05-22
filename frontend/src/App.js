@@ -1,6 +1,6 @@
 import './App.css';
-import Home from './home';
-import Analytics from './analytics';
+import Home from './Home';
+import Analytics from './Analytics';
 
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 

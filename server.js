@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('mysql');
+const cors = require('cors');
 const path = require('path');
 const dotenv = require('dotenv');
 const app = express();
@@ -10,6 +11,7 @@ dotenv.config({
 })
 
 //Access client folder for frontend files
+app.use(cors());
 app.use(express.static("client"));
 app.use(express.json());
 
@@ -134,4 +136,4 @@ app.delete("/link/:shortlink", function(request,response){
     })
 })
 
-app.listen(3000);
+app.listen(5000);
