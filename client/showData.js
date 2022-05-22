@@ -8,7 +8,7 @@ window.onload = function(){
             html += `
                 <div class = "linkCard">
                     <p>${data[i].url}</p>
-                    <p>${data[i].shortlink}</p>
+                    <p>http://localhost:3000/${data[i].shortlink}</p>
                     <button>Delete</button>
                 </div>
             `;

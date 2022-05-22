@@ -30,7 +30,7 @@ sqlConnection.connect(function(error){
     }
 });
 
-//server side rendering for main page (home.html)
+//server side rendering for main page and analytics page
 app.get("/", function(request, response) {
     response.sendFile(__dirname + "/client/home.html");
 })
@@ -39,7 +39,7 @@ app.get("/data-tables", function(request, response) {
     response.sendFile(__dirname + "/client/dataTable.html");
 })
 
-//POST function for submitting links to db (Should be connected to button on client side)
+//POST route for submitting links to db (Should be connected to button on client side)
 app.post("/api/create-url", function(request, response) {
     let shortenedExtension = Math.random().toString(36).substring(2,8); //6 character unique link extention 
     //inserting values into mysql db
@@ -59,6 +59,7 @@ app.post("/api/create-url", function(request, response) {
     });
 }); 
 
+//get route for retrieving db data
 app.get("/api/get-data", function(request,response){
     let select = "SELECT * FROM userLinks";
     sqlConnection.query(select, function(error, result){
@@ -69,6 +70,32 @@ app.get("/api/get-data", function(request,response){
             });
         } else {
             response.status(200).json(result);
+        }
+    })
+})
+
+//App route for redirecting the user to the url of that tuple
+app.get("/:shortlink", function(request,response){
+    let shortlink = request.params.shortlink;
+    let select = `SELECT * FROM userLinks WHERE shortlink='${shortlink}' LIMIT 1`;
+    sqlConnection.query(select, function(error,result){
+        if(error){
+            response.status(500).json({
+                status:"ERROR",
+                message:"There was an error with selecting a shortlink!" + error
+            });
+        } else {
+            select = `UPDATE userLinks SET clicks = ${result[0].clicks + 1} WHERE id='${result[0].id}' LIMIT 1`;
+            sqlConnection.query(select, function(error, result1) {
+                if(error){
+                    response.status(500).json({
+                        status:"ERROR",
+                        message:"There was an error with updating the selected tuple!" + error
+                    });
+                } else {
+                    response.redirect(result[0].url);
+                }
+            })
         }
     })
 })
