@@ -74,7 +74,7 @@ app.get("/api/get-data", function(request,response){
     })
 })
 
-//App route for redirecting the user to the url of that tuple
+//App.get for redirecting user to a link
 app.get("/:shortlink", function(request,response){
     let shortlink = request.params.shortlink;
     let select = `SELECT * FROM userLinks WHERE shortlink='${shortlink}' LIMIT 1`;
@@ -98,6 +98,38 @@ app.get("/:shortlink", function(request,response){
                     }
                 })
             }
+        }
+    })
+})
+
+//App route for getting one link
+app.get("/link/:shortlink", function(request,response){
+    let shortlink = request.params.shortlink;
+    let select = `SELECT * FROM userLinks WHERE shortlink='${shortlink}'`;
+    sqlConnection.query(select, function(error, result){
+        if(error){
+            response.status(500).json({
+                status:"ERROR",
+                message:"There was an error with selecting a shortlink!" + error
+            });
+        } else {
+            response.send(result);
+        }
+    })
+})
+
+//App route for the delete button
+app.delete("/link/:shortlink", function(request,response){
+    let shortlink = request.params.shortlink;
+    let deleteLink = `DELETE FROM userLinks WHERE shortlink='${shortlink}'`;
+    sqlConnection.query(deleteLink, function(error, result){
+        if(error){
+            response.status(500).json({
+                status:"ERROR",
+                message:"There was an error with deleting a shortlink!" + error
+            });
+        } else {
+            response.send("Deleted!");
         }
     })
 })
