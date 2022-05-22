@@ -86,7 +86,7 @@ app.get("/:shortlink", function(request,response){
             });
         } else {
             if (result.length > 0){
-                select = `UPDATE userLinks SET clicks = ${result[0].clicks + 1} WHERE id='${result[0].id}' LIMIT 1`;
+                select = `UPDATE userLinks SET clicks = ${result[0].clicks + 1} WHERE shortlink='${result[0].shortlink}' LIMIT 1`;
                 sqlConnection.query(select, function(error, result1) {
                     if(error){
                         response.status(500).json({

@@ -5,6 +5,8 @@ html{
     height: 100vh;
 }
 
-.bodyContainer{
-    
+.homeHeader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
