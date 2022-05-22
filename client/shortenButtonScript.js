@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				"Content-type":"application/json; charset=UTF-8"
 			}
 			}).then(function(response){
+				document.querySelector(".urlInput").value = "";
 				return response.json();
 			}).then(function(data){
 				console.log(data);
