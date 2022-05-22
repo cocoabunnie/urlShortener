@@ -9,12 +9,21 @@ window.onload = function(){
                 <div class = "linkCard">
                     <p>${data[i].url}</p>
                     <p>http://localhost:3000/${data[i].shortlink}</p>
-                    <button>Delete</button>
+                    <button class="deleteBtn">Delete</button>
                 </div>
-            `;
+                `;
         }
         console.log(data);
         document.querySelector(".dataDisplayContainer").innerHTML = html;
+
+        //DELETE BUTTON CODE
+        let allDeleteBtn = document.getElementsByClassName(".deleteBtn");
+        for(var i = 0; i < allDeleteBtn.length; i++){
+            allDeleteBtn[i].addEventListener("click", function() {
+                alert("Delete button was clicked");
+            })
+        }
+
     }).catch(function(error){
         alert("ERROR WITH GETTING DATA" + error)
     })
