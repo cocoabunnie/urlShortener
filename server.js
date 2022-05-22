@@ -35,6 +35,10 @@ app.get("/", function(request, response) {
     response.sendFile(__dirname + "/client/home.html");
 })
 
+app.get("/data-tables", function(request, response) {
+    response.sendFile(__dirname + "/client/dataTable.html");
+})
+
 //POST function for submitting links to db (Should be connected to button on client side)
 app.post("/api/create-url", function(request, response) {
     let shortenedExtension = Math.random().toString(36).substring(2,8); //6 character unique link extention 
@@ -66,7 +70,7 @@ app.get("/api/get-data", function(request,response){
             response.status(200).json({
                 status:"SUCCESS"
             });
-            
+
             console.log("Data from db: \n" + result);
         }
     })
