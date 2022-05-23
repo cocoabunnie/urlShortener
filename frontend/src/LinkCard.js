@@ -1,7 +1,20 @@
 import React from "react";
+import axios from "axios";
 
 const LinkCard = (props) => {
-    const baseURL = "http://localhost:3000/" + props.shortLink;
+    const baseURL = "http://localhost:5000/" + props.shortLink;
+
+    const deleteButton = () => {
+        axios.delete("http://localhost:5000/link/" + props.shortLink, {
+            shortlink: props.shortLink
+        }).then(() => {
+            console.log("Deletion successful!");
+            props.update();
+        }).catch((error) => {
+            console.log(baseURL);
+            console.log("Uh Oh, error! " + error);
+        });
+    }
 
     return (
         <div className="linkCard">
@@ -9,7 +22,7 @@ const LinkCard = (props) => {
                 <p>Long Link: <a href = {props.url}>{props.url}</a></p>
                 <p>Short Link: <a href = {baseURL}>{baseURL}</a></p>
             
-            <button value={props.shortLink}>Delete</button>
+            <button value={props.shortLink} onClick={event => deleteButton(event)}>Delete</button>
         </div>
     );
 }

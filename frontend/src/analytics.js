@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import LinkCard from "./LinkCard";
 import axios from "axios";
 
-function Analytics() {
+const Analytics = () => {
     const baseURL = "http://localhost:5000";
     const[linkData, setLinkData] = useState([]);
     
@@ -14,6 +14,15 @@ function Analytics() {
         });
     }, []);
 
+    const updateLinkData = () => {
+        axios.get(baseURL+"/api/get-data", {}).then(function(response){
+            setLinkData(response.data);
+        }).catch(error => {
+            console.log("Uh oh!" + error);
+        });
+    }
+
+
     return (
         
         <div>
@@ -21,7 +30,7 @@ function Analytics() {
     
             <div className = "dataDisplayContainer">
                 {linkData.map((link) => {
-                    return <LinkCard shortLink = {link.shortlink} url = {link.url}/>
+                    return <LinkCard shortLink = {link.shortlink} url = {link.url} update = {updateLinkData}/>
                 })}
             </div>
 
