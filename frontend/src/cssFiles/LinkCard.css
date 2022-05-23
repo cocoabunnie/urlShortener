@@ -1,0 +1,21 @@
+.linkCard{
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 10px;
+
+    text-align: left;
+    font-weight: bold;
+}
+
+.deleteBtn{
+    background-color: red;
+    color: white;
+
+    font-weight: bold;
+
+    height: 30px;
+    width: 60px;
+    border: 0px;
+    border-radius: 5px;
+}

@@ -27,14 +27,17 @@ const Analytics = () => {
         
         <div>
             <h1>Welcome to the Link Analytics</h1>
+
+            <a href="/">
+                <button className = "backButton">Back</button>
+            </a>
     
             <div className = "dataDisplayContainer">
                 {linkData.map((link) => {
-                    return <LinkCard shortLink = {link.shortlink} url = {link.url} update = {updateLinkData}/>
+                    return <LinkCard shortLink = {link.shortlink} url = {link.url} clicks = {link.clicks} update = {updateLinkData}/>
                 })}
             </div>
-
-            <a href="/">back</a>
+            
         </div>
     );
 }

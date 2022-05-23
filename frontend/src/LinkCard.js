@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import './cssFiles/LinkCard.css';
 
 const LinkCard = (props) => {
     const baseURL = "http://localhost:5000/" + props.shortLink;
@@ -21,8 +22,9 @@ const LinkCard = (props) => {
             <p>{props.link}</p>
                 <p>Long Link: <a href = {props.url}>{props.url}</a></p>
                 <p>Short Link: <a href = {baseURL}>{baseURL}</a></p>
+                <p>Amount Of Uses: {props.clicks}</p>
             
-            <button value={props.shortLink} onClick={event => deleteButton(event)}>Delete</button>
+            <button className = "deleteBtn" value={props.shortLink} onClick={event => deleteButton(event)}>Delete</button>
         </div>
     );
 }
