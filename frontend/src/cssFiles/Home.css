@@ -1,4 +1,18 @@
-.test {
+.navBar a{
+    text-decoration: none;
+    color: black;
+    margin: 20px;
+    padding: 10px;
+}
+
+.navBar a:hover{
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    margin: 20px;
+}
+
+.centeredContainer {
     display: flex;
     justify-content: center;
     align-items: center;
