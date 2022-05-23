@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
+import LinkCard from "./LinkCard";
 import axios from "axios";
 
 function Analytics() {
-    const d = [];
     const baseURL = "http://localhost:5000";
     const[linkData, setLinkData] = useState([]);
     
@@ -14,10 +14,6 @@ function Analytics() {
         });
     }, []);
 
-    const renderCards = () => {
-        
-    }
-
     return (
         
         <div>
@@ -25,7 +21,7 @@ function Analytics() {
     
             <div className = "dataDisplayContainer">
                 {linkData.map((link) => {
-                    return <h1>{link.url}</h1>
+                    return <LinkCard shortLink = {link.shortlink} url = {link.url}/>
                 })}
             </div>
 
