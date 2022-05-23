@@ -30,7 +30,9 @@ const Home = (props) => {
                 <br/>
                 <div className = "newURLDisplay"></div>
                 <br/>
-                <a href="/analytics">Created Links</a>
+                <a href="/analytics">
+                    <button>Link Analytics</button>
+                </a>
             </div>
         </div>
         
