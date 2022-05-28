@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "startDev": "nodemon server.js"
+    "start": "concurrently \"node server.js\" \"cd frontend && npm start\""
   },
   "repository": {
     "type": "git",

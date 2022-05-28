@@ -8,6 +8,10 @@
     font-weight: bold;
 }
 
+a{
+    color: rgb(143, 175, 250);
+}
+
 .deleteBtn{
     background-color: red;
     color: white;

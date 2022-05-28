@@ -8,6 +8,11 @@ const Instructions = () => {
             Paste the URL you would like to shorten in the textbox, and press "convert"<br/>
             The URL shortener would take the long URL and convert it into a shorter URL!<br/>
             You can also look at the "Link Analytics" page to see all the URL's made as well as how often they're used</p>
+            <a href="/">
+                <button>
+                    Back
+                </button>
+            </a>
         </div>
     );
 }
